@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  cambrian-wallet-api:
+    build: ./
+    ports:
+      - "8686:8686"
+  cambrian-wallet-nginx:
+    build: ./nginx
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "80:80"
+      - "443:443"
