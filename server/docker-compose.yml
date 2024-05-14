@@ -1,10 +1,22 @@
 version: "3.9"
 services:
-  cambrian-wallet-api:
+  panda-bank-mongo:
+    image: mongo:latest
+    restart: always
+    # Mac: use command 'id' to get system user id and group id
+    user: ${MONGO_UID}:${MONGO_GID}
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: pandabank
+      MONGO_INITDB_ROOT_PASSWORD: caipei@panda
+    volumes:
+      - ./mongoStore:/data/db
+    ports:
+      - "27017:27017"
+  panda-bank-api:
     build: ./
     ports:
       - "8686:8686"
-  cambrian-wallet-nginx:
+  panda-bank-nginx:
     build: ./nginx
     extra_hosts:
       - "host.docker.internal:host-gateway"
