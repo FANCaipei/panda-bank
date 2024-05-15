@@ -10,7 +10,7 @@ const AuthPage = () => {
         className='h-[130px] w-full'
         style={{
           backgroundImage: `url(${window.location.origin}/assets/images/example.png)`,
-          clipPath: "ellipse(200px 90px)",
+          clipPath: "ellipse(200px 90px at center 20px)",
         }}
       >
         {/* top image */}
