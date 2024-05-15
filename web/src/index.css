@@ -9,6 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  height: 100%;
 }
 
 code {
@@ -16,14 +18,10 @@ code {
     monospace;
 }
 
-@media (max-width: 600px) {
-  html {
-    font-size: 14px;
-  }
+html {
+  height: 100%;
 }
 
-@media (min-width: 600px) {
-  html {
-    font-size: 16px;
-  }
+#root {
+  height: 100%;
 }
