@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ex1Request } from "../requests/exampleRequest";
 import { Button } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -22,6 +24,7 @@ const HomePage = () => {
   return (
     <div>
       <h2 className='text-3xl font-bold underline cursor-pointer'>Home Page</h2>
+      <FontAwesomeIcon icon={faUser} size='2xl' />
       <ul>
         <li>
           <Button onClick={goPage1}>{t("DESC_PAGE_1")}</Button>
