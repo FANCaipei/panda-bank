@@ -1,9 +1,11 @@
 import { Button, Input, Spacer } from "@nextui-org/react";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [phone, setPhone] = useState();
   const [phoneInputErrorMsg, setPhoneInputErrorMsg] = useState();
@@ -39,27 +41,29 @@ const AuthPage = () => {
     return true;
   }, [phone, verifyCode, phoneInputErrorMsg, verifyCodeInputErrorMsg]);
 
+  const auth = useCallback(() => {
+    // TODO: login or register
+    navigate("/home");
+  }, []);
+
   return (
     <div className='bg-emerald-600 flex flex-col h-full items-stretch'>
-      <div
+      {/* <div
         className='h-[180px] w-full bg-cover'
         style={{
           backgroundImage: `url(${window.location.origin}/assets/images/example.png)`,
           clipPath: "ellipse(250px 120px at center 60px)",
         }}
       >
-        {/* top image */}
-      </div>
-      <div className='mt-10 text-4xl text-center font-semibold'>
+        top image
+      </div> */}
+      <div className='grow text-4xl font-semibold flex justify-center items-center'>
         {t("auth:AUTH_PAGE_TITLE")}
       </div>
-      {/* <div className='pb-10 text-xs text-center'>
-          {t("auth:AUTH_PAGE_SUB_TITLE")}
-        </div> */}
-      <div className='px-4 mt-10'>
-        {/* form block */}
+      <div className='bg-white rounded-tl-3xl rounded-tr-3xl px-3 pt-10 pb-8'>
         <Input
           type='text'
+          size='lg'
           label={t("auth:LABEL_PHONE")}
           value={phone}
           onValueChange={onPhoneInputValChange}
@@ -69,34 +73,29 @@ const AuthPage = () => {
         <Spacer y={8} />
         <Input
           type='text'
+          size='lg'
           label={t("auth:LABEL_SMSCODE")}
           value={verifyCode}
           onValueChange={onCodeInputValChange}
           isInvalid={verifyCodeInputErrorMsg?.length ? true : false}
           errorMessage={verifyCodeInputErrorMsg}
         />
-      </div>
-
-      {/* <div className='grow'>spacer</div> */}
-      <Spacer y={40} />
-      <div className='pb-10 flex flex-col px-4'>
-        {/* buttons block*/}
+        <Spacer y={24} />
         <Button
           color='primary'
           isDisabled={!isFormValid()}
           size='lg'
+          fullWidth={true}
           radius='full'
+          onClick={auth}
         >
           {t("auth:LOGIN_BTN")}
         </Button>
-        {/* <Spacer y={3} />
-        <Button className='bg-gray-400' isDisabled={!isFormValid()}>
-          {t("auth:SIGNUP_BTN")}
-        </Button> */}
+        <Spacer y={4} />
+        <div className='text-xs text-gray-700 text-center w-full'>
+          {t("auth:COPY_RIGHT")}
+        </div>
       </div>
-      <span className='text-xs text-gray-700 absolute bottom-3 left-1/2 translate-x-[-50%]'>
-        {t("auth:COPY_RIGHT")}
-      </span>
     </div>
   );
 };
