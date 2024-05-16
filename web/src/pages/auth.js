@@ -44,7 +44,7 @@ const AuthPage = () => {
   const auth = useCallback(() => {
     // TODO: login or register
     navigate("/home");
-  }, []);
+  }, [navigate]);
 
   return (
     <div className='bg-emerald-600 flex flex-col h-full items-stretch'>
