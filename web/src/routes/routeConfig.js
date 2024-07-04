@@ -1,6 +1,6 @@
 import AuthPage from "../pages/auth";
 import HomePage from "../pages/home/home";
-import Page1 from "../pages/page1";
+import StateMentPage from "../pages/statement/statement";
 
 const routeConfig = [
   {
@@ -12,8 +12,8 @@ const routeConfig = [
     element: <HomePage />,
   },
   {
-    path: "/page1",
-    element: <Page1 />,
+    path: "/statement",
+    element: <StateMentPage />,
   },
 ];
 
