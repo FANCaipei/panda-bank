@@ -1,4 +1,4 @@
-import { Card, CardHeader } from "@nextui-org/react";
+import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -9,9 +9,24 @@ const HomeContent = () => {
   return (
     <div className='px-4 py-3'>
       <Card>
-        <CardHeader onClick={() => navigate("/statement")}>
+        <CardHeader
+          onClick={() =>
+            navigate("/statement", { state: { cardType: "bank" } })
+          }
+        >
           {t("home:HOME_PAGE_BANK_CARD_TITLE")}
         </CardHeader>
+        <CardBody></CardBody>
+      </Card>
+      <Card className='mt-6'>
+        <CardHeader
+          onClick={() =>
+            navigate("/statement", { state: { cardType: "credit" } })
+          }
+        >
+          {t("home:HOME_PAGE_CREDIT_CARD_TITLE")}
+        </CardHeader>
+        <CardBody></CardBody>
       </Card>
     </div>
   );
