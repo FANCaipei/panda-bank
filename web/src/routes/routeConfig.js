@@ -1,5 +1,5 @@
 import AuthPage from "../pages/auth";
-import HomePage from "../pages/home";
+import HomePage from "../pages/home/home";
 import Page1 from "../pages/page1";
 
 const routeConfig = [
