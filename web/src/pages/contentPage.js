@@ -1,40 +1,36 @@
 import cn from "classnames";
-
-const HEADER_HEIGHT = "h-16";
-const CONTENT_PADDING_TOP = "pt-16";
-const FOOTER_HEIGHT = "h-12";
-const CONTENT_PADDING_BOTTOM = "pb-12";
+import { useEffect, useRef, useState } from "react";
 
 const ContentPage = ({ header, footer, content }) => {
+  const footerRef = useRef();
+  const headerRef = useRef();
+  const [footerHeight, setFooterHeight] = useState(0);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    if (footerRef.current) {
+      setFooterHeight(footerRef.current.offsetHeight);
+    }
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  }, []);
+
   return (
     <div className='h-screen relative w-full'>
-      <div
-        className={cn(
-          "w-full",
-          "absolute",
-          "top-0",
-          header != null ? HEADER_HEIGHT : "h-0"
-        )}
-      >
+      <div className={cn("w-full", "absolute", "top-0")} ref={headerRef}>
         {header}
       </div>
       <div
-        className={cn(
-          "w-full",
-          header != null ? CONTENT_PADDING_TOP : "pt-0",
-          footer != null ? CONTENT_PADDING_BOTTOM : "pb-0"
-        )}
+        className={cn("w-full", "h-screen")}
+        style={{
+          paddingTop: `${headerHeight}px`,
+          paddingBottom: `${footerHeight}px`,
+        }}
       >
         {content}
       </div>
-      <div
-        className={cn(
-          "w-full",
-          "absolute",
-          "bottom-0",
-          footer != null ? FOOTER_HEIGHT : "h-0"
-        )}
-      >
+      <div className={cn("w-full", "absolute", "bottom-0")} ref={footerRef}>
         {footer}
       </div>
     </div>
