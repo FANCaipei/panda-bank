@@ -1,4 +1,5 @@
 import AuthPage from "../pages/auth";
+import BankSettingPage from "../pages/bankSetting/bankSetting";
 import HomePage from "../pages/home/home";
 import StateMentPage from "../pages/statement/statement";
 
@@ -14,6 +15,10 @@ const routeConfig = [
   {
     path: "/statement",
     element: <StateMentPage />,
+  },
+  {
+    path: "/bank-setting",
+    element: <BankSettingPage />,
   },
 ];
 

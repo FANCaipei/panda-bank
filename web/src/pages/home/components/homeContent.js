@@ -34,12 +34,12 @@ const HomeContent = () => {
             <Button
               variant='bordered'
               color='danger'
-              size='sm'
+              size='md'
               className='mt-3'
             >
               {t("home:ACTION_WITHDRAW")}
             </Button>
-            <Button color='primary' size='sm' className='mt-2'>
+            <Button color='primary' size='md' className='mt-2'>
               {t("home:ACTION_DEPOSIT")}
             </Button>
           </CardBody>
@@ -67,10 +67,10 @@ const HomeContent = () => {
               </span>
             </div>
             <div className='text-lg font-semibold text-pink-700'>¥40</div>
-            <Button variant='bordered' size='sm' className='mt-3'>
+            <Button variant='bordered' size='md' className='mt-3'>
               {t("home:ACTION_PAY")}
             </Button>
-            <Button color='primary' size='sm' className='mt-2'>
+            <Button color='primary' size='md' className='mt-2'>
               {t("home:ACTION_CONSUME")}
             </Button>
           </CardBody>

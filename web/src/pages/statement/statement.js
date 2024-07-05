@@ -1,6 +1,6 @@
 import ContentPage from "../contentPage";
 import StatementContent from "./component/stateMentContent";
-import SubpageHeader from "../../components/subpageHeader";
+import PageHeader from "../../components/pageHeader";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -27,7 +27,7 @@ const StateMentPage = () => {
 
   return (
     <ContentPage
-      header={<SubpageHeader title={title} />}
+      header={<PageHeader title={title} />}
       content={<StatementContent />}
     />
   );
