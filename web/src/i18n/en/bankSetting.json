@@ -1,3 +1,7 @@
 {
-  "TITLE_BANK_SETTIING_HEADER": "Bank Setting"
+  "TITLE_BANK_SETTIING_HEADER": "Bank Setting",
+  "TITLE_DEPOSIT_PRODUCT": "Deposit Products",
+  "TITLE_FINANCIAL_PRODUCT": "Financial Products",
+  "ACTION_ADD": "Add",
+  "TEXT_DUR_UNIT_MONTH": "Months"
 }

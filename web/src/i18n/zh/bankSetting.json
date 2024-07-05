@@ -1,3 +1,7 @@
 {
-  "TITLE_BANK_SETTIING_HEADER": "银行设置"
+  "TITLE_BANK_SETTIING_HEADER": "银行设置",
+  "TITLE_DEPOSIT_PRODUCT": "存款产品",
+  "TITLE_FINANCIAL_PRODUCT": "理财产品",
+  "ACTION_ADD": "新增",
+  "TEXT_DUR_UNIT_MONTH": "个月"
 }
