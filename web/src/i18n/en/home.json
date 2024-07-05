@@ -1,4 +1,14 @@
 {
-  "HOME_PAGE_BANK_CARD_TITLE": "Bank Card",
-  "HOME_PAGE_CREDIT_CARD_TITLE": "Credit Card"
+  "BANK_CARD_TITLE": "Bank Card",
+  "CREDIT_CARD_TITLE": "Credit Card",
+  "TITLE_OVERVIEW": "Overview",
+  "TITLE_BANK_BALANCE": "Balance",
+  "TITLE_CREDIT_BALANCE": "Bill",
+  "ACTION_DEPOSIT": "Deposit",
+  "ACTION_WITHDRAW": "Withdraw",
+  "TEXT_MORE": "More",
+  "TEXT_REPAID": "Repaid",
+  "TEXT_TO_BE_REPAID": "To be repaid",
+  "ACTION_PAY": "Repayment",
+  "ACTION_CONSUME": "Consume"
 }

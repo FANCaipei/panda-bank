@@ -31,14 +31,14 @@ const NavFooter = () => {
   );
 
   return (
-    <div className='pb-3 px-5'>
-      <div className='flex justify-around py-3 rounded-full backdrop-blur bg-stone-300/[0.6] shadow-md'>
+    <div className='pb-4 px-5'>
+      <div className='flex justify-around py-3 rounded-full backdrop-blur-md bg-stone-50/[0.8] shadow-md'>
         {menuItems.map((item) => {
           return (
             <div
               key={item.code}
               className={cn(
-                "flex justify-center items-center p-3 rounded-full w-10 h-10",
+                "flex justify-center items-center p-3 rounded-full w-11 h-11",
                 { "bg-white": location.pathname === item.path }
               )}
               onClick={() => onMenuClick(item.path)}

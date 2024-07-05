@@ -17,7 +17,7 @@ const ContentPage = ({ header, footer, content }) => {
   }, []);
 
   return (
-    <div className='h-screen relative w-full'>
+    <div className='h-screen relative w-full bg-gray-100'>
       <div className={cn("w-full", "absolute", "top-0")} ref={headerRef}>
         {header}
       </div>

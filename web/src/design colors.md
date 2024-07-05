@@ -1,0 +1,6 @@
+- main bg: gray-200
+- primary: blue-600
+- secondary: emerald-500
+- alert: rose-500
+- waring, attention: origin-500
+-

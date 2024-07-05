@@ -1,4 +1,14 @@
 {
-  "HOME_PAGE_BANK_CARD_TITLE": "银行卡",
-  "HOME_PAGE_CREDIT_CARD_TITLE": "信用卡"
+  "BANK_CARD_TITLE": "银行卡",
+  "CREDIT_CARD_TITLE": "信用卡",
+  "TITLE_OVERVIEW": "账户总览",
+  "TITLE_BANK_BALANCE": "活期余额",
+  "TITLE_CREDIT_BALANCE": "当期账单",
+  "ACTION_DEPOSIT": "存入",
+  "ACTION_WITHDRAW": "支取",
+  "TEXT_MORE": "更多",
+  "TEXT_REPAID": "已还清",
+  "TEXT_TO_BE_REPAID": "待偿还",
+  "ACTION_PAY": "还款",
+  "ACTION_CONSUME": "消费"
 }
