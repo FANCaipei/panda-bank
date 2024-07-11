@@ -2,14 +2,25 @@ import { useTranslation } from "react-i18next";
 import { Button, Card, CardBody, CardHeader, Spacer } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import ProductSettingModal from "./productSettingModal";
 
 const BlockTitle = ({ title }) => {
-  return <div className='text-2xl font-bold'>{title}</div>;
+  return <div className='text-2xl font-bold text-gray-400'>{title}</div>;
 };
 
 const BankSettingContent = () => {
   const { t } = useTranslation();
+  const [productModalController, setProductModalController] = useState({
+    isOpen: false,
+    onOpen: null,
+    onClose: null,
+    onOpenChange: null,
+  });
+
+  const [currentProductModalType, setCurrentProductModalType] =
+    useState(); /* deposit | financial */
+  const [currentProductModalData, setCurrentProductModalData] = useState();
 
   const [depositProducts] = useState([
     {
@@ -18,7 +29,35 @@ const BankSettingContent = () => {
       id: "xxx",
       interest: 0.3, // percentage
     },
+    {
+      dur: 6,
+      unit: "month",
+      id: "eret",
+      interest: 0.35, // percentage
+    },
   ]);
+
+  const onProductModalInit = useCallback(
+    (isOpen, onOpen, onClose, onOpenChange) => {
+      setProductModalController({
+        isOpen: isOpen,
+        onOpen: onOpen,
+        onClose: onClose,
+        onOpenChange: onOpenChange,
+      });
+    },
+    []
+  );
+
+  const openProductModal = useCallback(
+    (productData) => {
+      console.log("product data: ", productData);
+      setCurrentProductModalType("deposit");
+      setCurrentProductModalData(productData);
+      productModalController?.onOpen();
+    },
+    [productModalController]
+  );
 
   return (
     <div className='px-4 py-3'>
@@ -27,9 +66,12 @@ const BankSettingContent = () => {
         {/* deposit products */}
         <div className='grid grid-cols-2 gap-3'>
           {depositProducts.map((product) => (
-            <Card key={product.id}>
+            <Card key={product.id} className='bg-gray-100'>
               <CardHeader>
-                <div className='flex items-center justify-between w-full'>
+                <div
+                  className='flex items-center justify-between w-full'
+                  onClick={() => openProductModal(product)}
+                >
                   <span className='text-xl'>
                     {product.dur}&nbsp;
                     {t("bankSetting:TEXT_DUR_UNIT_MONTH")}
@@ -48,7 +90,10 @@ const BankSettingContent = () => {
                 </div>
               </CardHeader>
               <CardBody className='pt-0'>
-                <div className='flex items-end'>
+                <div
+                  className='flex items-end'
+                  onClick={() => openProductModal(product)}
+                >
                   <span className='text-3xl text-orange-500'>
                     {product.interest?.toFixed(2)}
                   </span>
@@ -72,6 +117,13 @@ const BankSettingContent = () => {
       <BlockTitle
         title={t("bankSetting:TITLE_FINANCIAL_PRODUCT")}
         className='mt-5'
+      />
+
+      {/* modals */}
+      <ProductSettingModal
+        onInit={onProductModalInit}
+        productType={currentProductModalType}
+        productData={currentProductModalData}
       />
     </div>
   );

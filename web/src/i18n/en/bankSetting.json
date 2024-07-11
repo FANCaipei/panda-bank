@@ -3,5 +3,8 @@
   "TITLE_DEPOSIT_PRODUCT": "Deposit Products",
   "TITLE_FINANCIAL_PRODUCT": "Financial Products",
   "ACTION_ADD": "Add",
-  "TEXT_DUR_UNIT_MONTH": "Months"
+  "TEXT_DUR_UNIT_MONTH": "Months",
+  "TEXT_TERM": "Term",
+  "TEXT_TERM_INTEREST": "Term Interest",
+  "ERROR_INT_VALIDATOR": "Must be interger"
 }

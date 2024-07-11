@@ -3,5 +3,8 @@
   "TITLE_DEPOSIT_PRODUCT": "存款产品",
   "TITLE_FINANCIAL_PRODUCT": "理财产品",
   "ACTION_ADD": "新增",
-  "TEXT_DUR_UNIT_MONTH": "个月"
+  "TEXT_DUR_UNIT_MONTH": "个月",
+  "TEXT_TERM": "期限",
+  "TEXT_TERM_INTEREST": "到期利率",
+  "ERROR_INT_VALIDATOR": "请输入整数"
 }
