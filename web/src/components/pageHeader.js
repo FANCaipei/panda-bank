@@ -21,7 +21,7 @@ const PageHeader = ({ title, hasBackIcon = true }) => {
         />
       ) : null}
 
-      <div className='w-full text-center text-xl'>{title}</div>
+      <div className='w-full text-center text-2xl font-medium'>{title}</div>
     </div>
   );
 };
