@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Button, Card, CardBody, CardHeader, Spacer } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useCallback, useState } from "react";
 import ProductSettingModal from "./productSettingModal";
 
@@ -54,7 +54,9 @@ const BankSettingContent = () => {
       console.log("product data: ", productData);
       setCurrentProductModalType("deposit");
       setCurrentProductModalData(productData);
-      productModalController?.onOpen();
+      setTimeout(() => {
+        productModalController?.onOpen();
+      }, 0);
     },
     [productModalController]
   );
@@ -76,17 +78,17 @@ const BankSettingContent = () => {
                     {product.dur}&nbsp;
                     {t("bankSetting:TEXT_DUR_UNIT_MONTH")}
                   </span>
-                  <div className='flex items-center'>
-                    {/* <FontAwesomeIcon
+                  {/* <div className='flex items-center'>
+                    <FontAwesomeIcon
                       icon={faPenToSquare}
                       className='text-blue-600'
-                    /> */}
+                    />
                     <Spacer x={2} />
                     <FontAwesomeIcon
                       icon={faTrashCan}
                       className='text-rose-500'
                     />
-                  </div>
+                  </div> */}
                 </div>
               </CardHeader>
               <CardBody className='pt-0'>
@@ -94,7 +96,7 @@ const BankSettingContent = () => {
                   className='flex items-end'
                   onClick={() => openProductModal(product)}
                 >
-                  <span className='text-3xl text-orange-500'>
+                  <span className='text-3xl text-blue-600'>
                     {product.interest?.toFixed(2)}
                   </span>
                   <span className='ml-1 text-lg text-gray-400'>%</span>
@@ -109,6 +111,7 @@ const BankSettingContent = () => {
           fullWidth
           startContent={<FontAwesomeIcon icon={faPlus} radius='md' />}
           className='border mt-3'
+          onClick={openProductModal}
         >
           {t("bankSetting:ACTION_ADD")}
         </Button>

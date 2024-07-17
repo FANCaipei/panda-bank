@@ -156,7 +156,7 @@ const ProductSettingModal = ({
                 variant='solid'
                 onPress={editOrCreateProduct}
               >
-                Update
+                {editProductData.id ? "Update" : "Create"}
               </Button>
             </div>
           </ModalFooter>
