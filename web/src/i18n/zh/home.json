@@ -10,5 +10,7 @@
   "TEXT_REPAID": "已还清",
   "TEXT_TO_BE_REPAID": "待偿还",
   "ACTION_PAY": "还款",
-  "ACTION_CONSUME": "消费"
+  "ACTION_CONSUME": "消费",
+  "TITLE_DEPOSIT": "存款",
+  "TITLE_FINANCIAL": "理财"
 }

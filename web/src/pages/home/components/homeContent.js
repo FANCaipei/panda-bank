@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const HomeContent = () => {
         <div className='mt-2 text-3xl font-semibold text-gray-900'>¥35,600</div>
       </div>
       {/* bank card & credit card */}
-      <div className='mt-5 grid grid-cols-2 gap-3'>
+      <div className='mt-5 grid grid-cols-1 gap-3'>
         {/* bank card */}
         <Card className='shadow-none border-none'>
           <CardHeader
@@ -79,11 +79,24 @@ const HomeContent = () => {
       {/* financial products */}
       <Card className='mt-5 shadow-none border-none'>
         <CardBody>
-          <div className='flex justify-between'>
-            <h5 className='text-base'>xxx</h5>
-            <span className='text-base text-blue-600'>
-              {t("home:TEXT_MORE")}
-            </span>
+          <div className='flex items-center'>
+            <div className='w-1/2'>
+              <div className='text-lg text-center'>
+                {t("home:TITLE_DEPOSIT")}
+              </div>
+              <div className='text-blue-600 font-semibold text-center mt-3'>
+                ¥350
+              </div>
+            </div>
+            <Divider orientation='vertical' className='h-9' />
+            <div className='w-1/2'>
+              <div className='text-lg text-center'>
+                {t("home:TITLE_FINANCIAL")}
+              </div>
+              <div className='text-emerald-600 font-semibold text-center mt-3'>
+                ¥25
+              </div>
+            </div>
           </div>
         </CardBody>
       </Card>

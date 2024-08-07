@@ -22,7 +22,7 @@ const ContentPage = ({ header, footer, content }) => {
         {header}
       </div>
       <div
-        className={cn("w-full", "h-screen")}
+        className={cn("w-full", "h-screen", "overflow-y-auto", "no-scrollbar")}
         style={{
           paddingTop: `${headerHeight}px`,
           paddingBottom: `${footerHeight}px`,

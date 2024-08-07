@@ -84,7 +84,7 @@ const ProductSettingModal = ({
   const deleteProduct = useCallback(() => {
     onDelete(productType, editProductData.id);
     onClose();
-  }, [onClose, productType, editProductData]);
+  }, [onClose, productType, onDelete, editProductData]);
 
   useEffect(() => {
     if (productData) {

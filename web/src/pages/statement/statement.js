@@ -1,5 +1,5 @@
 import ContentPage from "../contentPage";
-import StatementContent from "./component/stateMentContent";
+import StatementContent from "./component/statementContent";
 import PageHeader from "../../components/pageHeader";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";

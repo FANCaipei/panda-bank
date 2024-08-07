@@ -10,5 +10,7 @@
   "TEXT_REPAID": "Repaid",
   "TEXT_TO_BE_REPAID": "To be repaid",
   "ACTION_PAY": "Repayment",
-  "ACTION_CONSUME": "Consume"
+  "ACTION_CONSUME": "Consume",
+  "TITLE_DEPOSIT": "Deposit",
+  "TITLE_FINANCIAL": "Financial"
 }
