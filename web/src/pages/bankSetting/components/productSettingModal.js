@@ -11,12 +11,14 @@ import {
 } from "@nextui-org/react";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { nanoid } from "nanoid";
 
 const ProductSettingModal = ({
   onInit,
   productType /* deposit | financial */,
   productData,
-  onProductUpdate,
+  onUpdateOrCreated,
+  onDelete,
 }) => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
@@ -69,16 +71,24 @@ const ProductSettingModal = ({
   );
 
   const editOrCreateProduct = useCallback(() => {
-    onProductUpdate(productType, editProductData);
+    if (!editProductData.id) {
+      // TODO: new product, create query
+      editProductData.id = nanoid(); // delete it
+    } else {
+      // TODO: update product
+    }
+    onUpdateOrCreated(productType, editProductData);
+
     onClose();
-  }, [onClose, onProductUpdate, productType, editProductData]);
+  }, [onClose, onUpdateOrCreated, productType, editProductData]);
   const deleteProduct = useCallback(() => {
+    onDelete(productType, editProductData.id);
     onClose();
-  }, [onClose]);
+  }, [onClose, productType, editProductData]);
 
   useEffect(() => {
     if (productData) {
-      setEditProductData(JSON.parse(JSON.stringify(productData)));
+      setEditProductData(JSON.parse(JSON.stringify(productData ?? "{}")));
     } else {
       setEditProductData({});
     }

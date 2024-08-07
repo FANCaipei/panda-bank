@@ -50,10 +50,10 @@ const BankSettingContent = () => {
   );
 
   const openProductModal = useCallback(
-    (productData) => {
+    (productType /* deposit | financial */, productData) => {
       console.log("product data: ", productData);
-      setCurrentProductModalType("deposit");
-      setCurrentProductModalData(productData);
+      setCurrentProductModalType(productType);
+      setCurrentProductModalData(productData ?? {});
       setTimeout(() => {
         productModalController?.onOpen();
       }, 0);
@@ -74,7 +74,29 @@ const BankSettingContent = () => {
           );
           if (idx >= 0) {
             tempDepositProducts[idx] = newProduct;
+          } else {
+            // new product
+            tempDepositProducts.push(newProduct);
           }
+          setDepositProducts(tempDepositProducts);
+          break;
+        case "financial":
+          break;
+        default:
+          break;
+      }
+    },
+    [depositProducts]
+  );
+  const onProductDelete = useCallback(
+    (productType, deletedProductId) => {
+      switch (productType) {
+        /* deposit | financial */
+        case "deposit":
+          let tempDepositProducts = JSON.parse(JSON.stringify(depositProducts));
+          tempDepositProducts = tempDepositProducts.filter(
+            (item) => item.id !== deletedProductId
+          );
           setDepositProducts(tempDepositProducts);
           break;
         case "financial":
@@ -97,7 +119,7 @@ const BankSettingContent = () => {
               <CardHeader>
                 <div
                   className='flex items-center justify-between w-full'
-                  onClick={() => openProductModal(product)}
+                  onClick={() => openProductModal("deposit", product)}
                 >
                   <span className='text-xl'>
                     {product.dur}&nbsp;
@@ -119,7 +141,7 @@ const BankSettingContent = () => {
               <CardBody className='pt-0'>
                 <div
                   className='flex items-end'
-                  onClick={() => openProductModal(product)}
+                  onClick={() => openProductModal("deposit", product)}
                 >
                   <span className='text-3xl text-blue-600'>
                     {parseFloat(product.interest)?.toFixed(2)}
@@ -136,11 +158,12 @@ const BankSettingContent = () => {
           fullWidth
           startContent={<FontAwesomeIcon icon={faPlus} radius='md' />}
           className='border mt-3'
-          onClick={openProductModal}
+          onClick={() => openProductModal("deposit")}
         >
           {t("bankSetting:ACTION_ADD")}
         </Button>
       </div>
+      <div className='mt-5'>{/* financial products */}</div>
       <Spacer y={8} />
       <BlockTitle
         title={t("bankSetting:TITLE_FINANCIAL_PRODUCT")}
@@ -153,7 +176,8 @@ const BankSettingContent = () => {
         onInit={onProductModalInit}
         productType={currentProductModalType}
         productData={currentProductModalData}
-        onProductUpdate={onProductModified}
+        onUpdateOrCreated={onProductModified}
+        onDelete={onProductDelete}
       />
     </div>
   );
