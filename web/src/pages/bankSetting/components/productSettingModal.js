@@ -16,6 +16,7 @@ const ProductSettingModal = ({
   onInit,
   productType /* deposit | financial */,
   productData,
+  onProductUpdate,
 }) => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
@@ -57,16 +58,27 @@ const ProductSettingModal = ({
     [intInputValidateController, editProductData]
   );
 
+  const onInterestChange = useCallback(
+    (value) => {
+      setEditProductData({
+        ...editProductData,
+        interest: value,
+      });
+    },
+    [editProductData]
+  );
+
   const editOrCreateProduct = useCallback(() => {
+    onProductUpdate(productType, editProductData);
     onClose();
-  }, [onClose]);
+  }, [onClose, onProductUpdate, productType, editProductData]);
   const deleteProduct = useCallback(() => {
     onClose();
   }, [onClose]);
 
   useEffect(() => {
     if (productData) {
-      setEditProductData(productData);
+      setEditProductData(JSON.parse(JSON.stringify(productData)));
     } else {
       setEditProductData({});
     }
@@ -123,6 +135,7 @@ const ProductSettingModal = ({
                     isRequired
                     label=''
                     placeholder={t("bankSetting:TEXT_TERM_INTEREST")}
+                    onValueChange={onInterestChange}
                     endContent={
                       <div className='pointer-events-none flex items-center'>
                         <span className='text-default-400 text-base'>%</span>

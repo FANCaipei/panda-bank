@@ -22,7 +22,7 @@ const BankSettingContent = () => {
     useState(); /* deposit | financial */
   const [currentProductModalData, setCurrentProductModalData] = useState();
 
-  const [depositProducts] = useState([
+  const [depositProducts, setDepositProducts] = useState([
     {
       dur: 2,
       unit: "month",
@@ -61,6 +61,31 @@ const BankSettingContent = () => {
     [productModalController]
   );
 
+  const onProductModified = useCallback(
+    (productType, newProduct) => {
+      switch (productType) {
+        /* deposit | financial */
+        case "deposit":
+          const tempDepositProducts = JSON.parse(
+            JSON.stringify(depositProducts)
+          );
+          const idx = tempDepositProducts.findIndex(
+            (item) => item.id === newProduct.id
+          );
+          if (idx >= 0) {
+            tempDepositProducts[idx] = newProduct;
+          }
+          setDepositProducts(tempDepositProducts);
+          break;
+        case "financial":
+          break;
+        default:
+          break;
+      }
+    },
+    [depositProducts]
+  );
+
   return (
     <div className='px-4 py-3'>
       <BlockTitle title={t("bankSetting:TITLE_DEPOSIT_PRODUCT")} />
@@ -97,7 +122,7 @@ const BankSettingContent = () => {
                   onClick={() => openProductModal(product)}
                 >
                   <span className='text-3xl text-blue-600'>
-                    {product.interest?.toFixed(2)}
+                    {parseFloat(product.interest)?.toFixed(2)}
                   </span>
                   <span className='ml-1 text-lg text-gray-400'>%</span>
                 </div>
@@ -121,12 +146,14 @@ const BankSettingContent = () => {
         title={t("bankSetting:TITLE_FINANCIAL_PRODUCT")}
         className='mt-5'
       />
+      <BlockTitle title='credit card setting' />
 
       {/* modals */}
       <ProductSettingModal
         onInit={onProductModalInit}
         productType={currentProductModalType}
         productData={currentProductModalData}
+        onProductUpdate={onProductModified}
       />
     </div>
   );
